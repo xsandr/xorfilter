@@ -61,7 +61,7 @@ func PopulateFuse32(keys []uint64) (*Fuse32, error) {
 	// ref: Algorithm 3
 	size := len(keys)
 	capacity := uint32(FUSE_OVERHEAD*float64(size) + FUSE_CONSTANT)
-	capacity = capacity / SLOTS * SLOTS
+	capacity = ((capacity + SLOTS - 1) / SLOTS) * SLOTS
 	rngcounter := uint64(1)
 
 	filter := &Fuse32{}
